@@ -1,0 +1,40 @@
+
+--INGRESAR_NUEVO_LIBRO_GRUPO#B
+CREATE PROCEDURE INGRESAR_NUEVO_LIBRO_GRUPO#B
+	-- Add the parameters for the stored procedure here
+	
+	@Titulo varchar(50),
+	@Editorial varchar(50),
+	@Area varchar(50),
+	@IDAutor varchar(50)
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	INSERT INTO [dbo].[Libro]
+
+	VALUES (@Titulo,@Editorial, @Area, @IDAutor)
+END
+GO
+
+--INGRESAR_NUEVO_AUTOR_PRESETAMO_DE_LIBRO#B
+
+CREATE PROCEDURE INGRESAR_NUEVO_AUTOR_PRESETAMO_DE_LIBRO#B
+	-- Add the parameters for the stored procedure here
+	
+	@Nombre varchar(50),
+	@Ncionalidad varchar(50)
+
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	INSERT INTO [dbo].[Autor]
+
+	VALUES (@Nombre,@Ncionalidad)
+END
+GO
