@@ -38,3 +38,48 @@ SET NOCOUNT ON;
 	VALUES (@Nombre,@Ncionalidad)
 END
 GO
+
+
+
+--[INGRESAR_NUEVO_ESTUDIANTE#GRUPOB]
+USE [BibliotecaGrupoB]
+GO
+/****** Object:  StoredProcedure [dbo].[INGRESAR_NUEVO_ESTUDIANTE#GRUPOB]    Script Date: 1/13/2022 9:45:59 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[INGRESAR_NUEVO_ESTUDIANTE#GRUPOB]
+	-- Add the parameters for the stored procedure here
+	
+@CI varchar(50),
+@Nombre varchar(50),
+@Direccion varchar(50),
+@Carrera varchar(100),
+@Edad int,
+@Celular int
+
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	INSERT INTO [dbo].[Estudiante]
+
+	VALUES (@CI,@Nombre,@Direccion ,@Carrera,@Edad ,@Celular)
+END
+
+
+
+
+--FORMATO DE FECHA SEGUN VISUAL C#
+
+
+declare @Existingdate2 datetime
+Set @Existingdate2=GETDATE()
+Select CONVERT(varchar,@Existingdate2,22) as [M DD YYYY hh:mm:ss(AM/PM)]
+
+
+
+
