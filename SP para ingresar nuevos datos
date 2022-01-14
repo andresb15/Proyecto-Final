@@ -82,4 +82,46 @@ Select CONVERT(varchar,@Existingdate2,22) as [M DD YYYY hh:mm:ss(AM/PM)]
 
 
 
+-- EDITAR_LIBRO_GRUPO#B
+
+CREATE PROCEDURE EDITAR_LIBRO_GRUPO#B
+	-- Add the parameters for the stored procedure here
+	@IDLibro INT,
+	@Titulo varchar(50),
+	@Editorial varchar(50),
+	@Area varchar(50)
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	UPDATE [dbo].[Libro]
+	SET [Titulo] = @Titulo,[Editorial] =@Editorial,[Area] = @Area
+	WHERE [IDLibro]  = @IDLibro 
+	 
+
+
+
+END
+GO
+
+--BUSCAR_LIBRO_POR_ID_GRUPO#B
+
+CREATE PROCEDURE [dbo].[BUSCAR_LIBRO_POR_ID_GRUPO#B]
+	-- Add the parameters for the stored procedure here
+	@IDLibro INT
+
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	SELECT * 
+	
+	FROM  [dbo].[Libro]
+	WHERE [IDLibro]  = @IDLibro
+
+END
 
