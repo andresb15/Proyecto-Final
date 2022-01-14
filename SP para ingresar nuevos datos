@@ -125,3 +125,30 @@ SET NOCOUNT ON;
 
 END
 
+--EDITAR_ESTUDIANTE#GRUPOB
+CREATE PROCEDURE EDITAR_ESTUDIANTE#GRUPOB
+	-- Add the parameters for the stored procedure here
+@IDLector INT,	
+@CI varchar(50),
+@Nombre varchar(50),
+@Direccion varchar(50),
+@Carrera varchar(100),
+@Edad int,
+@Celular int
+
+AS
+BEGIN
+SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+
+	UPDATE [dbo].[Estudiante]
+
+	SET [CI] = @CI,[Nombre]= @Nombre , [Direccion] =@Direccion,[Carrera] =  @Carrera,[Edad] =@Edad ,
+[Celular] = @Celular
+
+WHERE [IDLector] =@IDLector
+END
+
+
+
