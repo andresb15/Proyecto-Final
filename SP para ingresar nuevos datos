@@ -82,6 +82,9 @@ Select CONVERT(varchar,@Existingdate2,22) as [M DD YYYY hh:mm:ss(AM/PM)]
 
 
 
+--SUMAR 10 DIAS A LA FECHA ACTUAL
+DATEADD(day, 10, GETDATE())
+
 -- EDITAR_LIBRO_GRUPO#B
 
 CREATE PROCEDURE EDITAR_LIBRO_GRUPO#B
@@ -151,4 +154,39 @@ WHERE [IDLector] =@IDLector
 END
 
 
+--TRIGGERS PARA SUMAR Y RESTAR STOCK EN LIBROS:
 
+USE [VLAPractica]
+GO
+/****** Object:  Trigger [dbo].[TR_Empleados_Room2]    Script Date: 1/18/2022 1:32:43 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TRIGGER  [dbo].[SUMAR_STOCKLIBROS]
+   ON  [dbo].[prestamo]
+   AFTER INSERTED
+AS 
+
+DECLARE @idlibro AS INT
+
+select @idlibro = i.idlibro from inserted i
+
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for trigger here
+
+
+
+	UPDATE [dbo].[libro]
+
+	SET [stock] = [stock] - 1
+	WHERE [idlibro] = @idlibro
+
+
+	
+
+END
