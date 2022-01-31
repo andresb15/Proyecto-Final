@@ -1,0 +1,74 @@
+---1. Listar los datos de los autores que tengan más de un libro publicado
+
+Select A.IDAutor, B.Nombre, B.Nacionalidad, Count(A.IDAutor) as Cuenta_de_Libros_Repetidos
+from Libro as A
+Join Autor as B
+on A.IDAutor = B.IDAutor
+Group by A.IDAutor, B.Nombre, B.Nacionalidad
+Having count(*)>1
+
+---2. Listar nombre y edad de los estudiantes
+
+Select Nombre, Edad
+From Estudiante
+
+---3. ¿Qué estudiantes pertenecen a la carrera de Informática?
+
+Select *
+From Estudiante
+Where Carrera=INFORMATICA
+
+---4. Listar los nombres de los estudiantes cuyo apellido comience con la letra G?
+
+Select *
+From Estudiante
+Where Apellido like 'G%'
+
+
+---5. ¿Quiénes son los autores del libro “Visual Studio Net”, listar sola mente los nombres?
+
+Select * from Autor
+Where IDAutor=56
+
+
+---6. ¿Qué autores son de nacionalidad USA o Francia?
+
+Select * From Autor
+Where Nacionalidad like 'Estados Unidos' or Nacionalidad like 'Francia'
+
+---7. ¿Qué libros No Son del área de Internet?
+
+Select *
+From Libro
+Where Area != 'Internet'
+
+---8. ¿Qué libros se prestó el Lector “Felipe Loayza Beramendi”?
+
+SELECT L.Titulo,L.IDLibro,E.Nombre,E.Apellido
+
+FROM [dbo].[Prestamo] AS P
+INNER JOIN [dbo].[Estudiante] AS E
+ON P.[IDLector] = E.[IDLector] INNER JOIN 
+[dbo].[Libro] AS L
+ON L.IDLibro = P.IDLibro
+
+WHERE E.IDLector = 53
+
+
+---9. Listar el nombre del estudiante de menor edad
+
+Select  Top 1 * from
+Estudiante
+Where edad > 0
+Order by Edad Asc
+
+
+--10. Listar los nombres de los estudiantes que se prestaron Libros de Base de Datos
+
+Select A.IDLector
+From Prestamo As A
+Join Libro As B
+On A.IDLibro = B.IDLibro
+Where B.Area = 'Base de datos'
+
+
